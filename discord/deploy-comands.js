@@ -1,9 +1,7 @@
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 
-const clientId = process.env.CLIENT_ID,
-      guildId = process.env.GUILD_ID,
-      token = process.env.DISCORD_TOKEN;
+const { DISCORD_TOKEN, CLIENT_ID, GUILD_ID } = process.env; 
 
 const commands = [
     {
@@ -12,13 +10,13 @@ const commands = [
     },
 ];
 
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 
 (async () => {
     try {
         console.log('Started refreshing application (/) commands');
 
-        await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands });
+        await rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), { body: commands });
 
         console.log('Successfully reloaded application (/) commands.');
     } catch (error) {
