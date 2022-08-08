@@ -1,13 +1,21 @@
 const { REST, Routes } = require('discord.js');
 require('dotenv').config();
 
-const { DISCORD_TOKEN, CLIENT_ID, GUILD_ID } = process.env; 
+const { DISCORD_TOKEN, CLIENT_ID, GUILD_ID } = process.env;
 
 const commands = [
     {
         name: 'ping',
         description: 'Replies with Pong!',
     },
+    {
+        name: 'server',
+        description: 'Replies with server info',
+    },
+    {
+        name: 'user',
+        description: 'Replies with user info',
+    }
 ];
 
 const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
